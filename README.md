@@ -18,7 +18,7 @@
 1. All 10 base dishes should be displayed as radio input options.
 1. All 9 vegetables should be displayed as radio input options.
 1. All 6 side dishes should be displayed as radio input options.
-1. All previously purchases meals should be displayed below the meal options. Each purchase should display the primary key and the total cost of the purcahsed meal.
+1. All previously purchases meals should be displayed below the meal options. Each purchase should display the primary key and the total cost of the purchased meal.
 
 ### State Management
 
@@ -56,10 +56,10 @@ sequenceDiagram
 > 🧨 Before you click the "Assessment Complete" button on the Learning Platform, add your answers below for each question and make a commit. It is your option to request a face-to-face meeting with a coach for a vocabulary review.
 
 1. Should transient state be represented in a database diagram? Why, or why not?
-   > Your answer here
-2. In the **FoodTruck** module, you are **await**ing the invocataion of all of the component functions _(e.g. sales, veggie options, etc.)_. Why must you use the `await` keyword there? Explain what happens if you remove it.
-   > Your answer here
+   > No, the transientState objects are not stored as new objects in the purchases array until two things happen, the clickEvent for the purchaseCombo button and the dispatchEvent that is a custom event for the POST request.  When these two things happen, if the conditions of the fun, in which these eventListeners are in are met, the information that is temporarily stored in transientState is then added to the database. 
+2. In the **FoodTruck** module, you are **await**ing the invocation of all of the component functions _(e.g. sales, veggie options, etc.)_. Why must you use the `await` keyword there? Explain what happens if you remove it.
+   > The await keyword is attached to the invocation of these functions to signal they are part of an asynchronous fun that is awaiting the promised information from the API to render that information to the DOM, if it is removed, the fun will have an error of inPromise, meaning the asynchronous fun cannot continue until the promised information is received. 
 3. When the user is making choices by selecting radio buttons, explain how that data is retained so that the **Purchase Combo** button works correctly.
-   > Your answer here
+   > the button works correctly by invoking the saveMonthlySales function as the object that is returned when the handlePurchaseComboClick function is run with the parameters of the click event and it conditions that the Purchase Combo is the target of the click.  The data is retained in the saveMonthlySales function that has that object stored in transientState. 
 4. You used the `map()` array method in the self assessment _(at least, you should have since it is a learning objective)_. Explain why that function is helpful as a replacement for a `for..of` loop.
-   > Your answer here
+   > the map method is helpful because it iterates an array like a for of loop, however it returns an object as a HTML string and adds it to a new array.  
